@@ -116,6 +116,7 @@ The answers to the questions posed in the assignment can be found using the give
 |  Materialized paths |   |  X |   | X  |  X |
 |  Nested sets |  X | X  | X  |   |   |
 
+### The Model Trees
 - What is *Array of Ancestors*?
   - The Array of Ancestors pattern stores each tree node in a document; in addition to the tree node, document stores in an array the id(s) of the node’s ancestors or path.
   - The Array of Ancestors pattern provides a fast and efficient solution to find the descendants and the ancestors of a node by creating an index on the elements of the ancestors field. This makes Array of Ancestors a good choice for working with subtrees.
@@ -127,3 +128,8 @@ The answers to the questions posed in the assignment can be found using the give
 - What is *Nested sets*?
   - The Nested Sets pattern identifies each node in the tree as stops in a round-trip traversal of the tree. The application visits each node in the tree twice; first during the initial trip, and second during the return trip. The Nested Sets pattern stores each tree node in a document; in addition to the tree node, document stores the id of node’s parent, the node’s initial stop in the left field, and its return stop in the right field.
   - The Nested Sets pattern provides a fast and efficient solution for finding subtrees but is inefficient for modifying the tree structure. As such, this pattern is best for static trees that do not change.
+  
+### So how does the five given factors of *Atomicity*, *Sharding*, *Indexes*, *Large Number of Collections* and *Collection Contains Large Number of Small Documents* work in conjunction with each of the Models Tree's?
+
+**Note: I've only focused on the ones marked in the given table**
+  
