@@ -133,3 +133,24 @@ The answers to the questions posed in the assignment can be found using the give
 
 **Note: I've only focused on the ones marked in the given table**
   
+- **Arrays of Ancestors (AOA)**
+  - Atomicity
+    - Works well with AoA since the action/operation is atomic, so that if you try to inserting into the collection, only the single document is changed (or created).  
+  - Indexes
+    - Can be very useful with AOA, since the parents can be indexed on a specific document.
+  - Large Number of Collections
+    - The collection can grow incredible large, since each document has to refer to all the ancestors.
+- **Materialized Paths (MP)**
+  - Sharding
+    - Sharding can become incredibly useful in MP, since you can get the partial path to a document
+  - Large Number of Collections
+    - For MP, the path is still stored in each document, so Large Number of Collections makes great sense. 
+  - Collection Contains Larger Number of Small Documents
+    - Rather than having one big document, because the documents are split up, you’ll end up having many smaller documents in MP.
+- **Nested Sets (NS)**
+  - Atomicity
+    - Works well with NS since the action/operation is atomic, so that if you try to inserting into the collection, only the single document is changed (or created).
+  - Sharding
+    - NS benefits greatly from Sharding, since the different categories can be sharded
+  - Indexes
+    - Indexes can be added to the different categories
