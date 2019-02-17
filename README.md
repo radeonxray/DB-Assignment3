@@ -109,3 +109,21 @@ The answers to the questions posed in the assignment can be found using the give
         
 ----
 ## 2. Modeling
+
+|  Solutions |  Atomicity | Sharding  |  Indexes | Large Number of Collections  |  Collection Contains Large Number of Small Documents |
+|---|---|---|---|---|---|
+| Arrays of Ancestors  |X|   | X  | X  |   |
+|  Materialized paths |   |  X |   | X  |  X |
+|  Nested sets |  X | X  | X  |   |   |
+
+- What is *Array of Ancestors*?
+  - The Array of Ancestors pattern stores each tree node in a document; in addition to the tree node, document stores in an array the id(s) of the node’s ancestors or path.
+  - The Array of Ancestors pattern provides a fast and efficient solution to find the descendants and the ancestors of a node by creating an index on the elements of the ancestors field. This makes Array of Ancestors a good choice for working with subtrees.
+  - The Array of Ancestors pattern is slightly slower than the Materialized Paths pattern but is more straightforward to use
+  
+- What is *Materialized paths*?
+  - The Materialized Paths pattern stores each tree node in a document; in addition to the tree node, document stores as a string the id(s) of the node’s ancestors or path. Although the Materialized Paths pattern requires additional steps of working with strings and regular expressions, the pattern also provides more flexibility in working with the path, such as finding nodes by partial paths.
+
+- What is *Nested sets*?
+  - The Nested Sets pattern identifies each node in the tree as stops in a round-trip traversal of the tree. The application visits each node in the tree twice; first during the initial trip, and second during the return trip. The Nested Sets pattern stores each tree node in a document; in addition to the tree node, document stores the id of node’s parent, the node’s initial stop in the left field, and its return stop in the right field.
+  - The Nested Sets pattern provides a fast and efficient solution for finding subtrees but is inefficient for modifying the tree structure. As such, this pattern is best for static trees that do not change.
